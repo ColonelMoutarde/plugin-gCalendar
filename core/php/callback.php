@@ -2,17 +2,17 @@
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
 include_file('core', 'authentification', 'php');
 if (!jeedom::apiAccess(init('apikey'), 'gCalendar')) {
-	echo 'Clef API non valide, vous n\'êtes pas autorisé à effectuer cette action';
+	echo __('Clef API non valide, vous n\'êtes pas autorisé à effectuer cette action',__file__);
 	die();
 }
 $eqLogic = eqLogic::byId(init('eqLogic_id'));
 if (!is_object($eqLogic)) {
-	echo 'Impossible de trouver l\'équipement correspondant à : ' . init('eqLogic_id');
+	echo __('Impossible de trouver l\'équipement correspondant à : ',__file__) . init('eqLogic_id');
 	exit();
 }
 
 if (!isConnect()) {
-	echo 'Vous ne pouvez appeller cette page sans être connecté. Veuillez vous connecter <a href=' . network::getNetworkAccess() . '/index.php>ici</a> avant et refaire l\'opération de synchronisation';
+	echo __('Vous ne pouvez appeller cette page sans être connecté. Veuillez vous connecter',__file__) . <a href=' . network::getNetworkAccess() . '/index.php> . __('ici',__file__) . </a> .__('avant et refaire l\'opération de synchronisation',__file__);
 	die();
 }
 
